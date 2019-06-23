@@ -15,15 +15,9 @@ const CustomerList : React.FC = () =>{
         dispatch(deletingCustomer(id));
       } 
     const addCustomer = () =>{
-        console.log('add customer');
-        const c : Customer = {
-          id: uuid(),
-          firstName: "first",
-          lastName: "last",
-          dob: new Date()
-        }
+       
+       
         dispatch(showHideManagecustomer(true));
-        dispatch(addingCustomer(c));
        
       }
     const customerListHeader =   <Grid>
