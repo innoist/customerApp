@@ -1,5 +1,5 @@
-import { showHideManagecustomer } from './../actions/customers';
-import { AppActions, ADD_CUSTOMER, CustomerActionTypes, DELETE_CUSTOMER, SET_CUSTOMERS, EDIT_CUSTOMER, SHOW_HIDE_MANAGE_CUSTOMER } from './../types/actions';
+import { showHideManagecustomer, selectedCustomer } from './../actions/customers';
+import { AppActions, ADD_CUSTOMER, CustomerActionTypes, DELETE_CUSTOMER, SET_CUSTOMERS, EDIT_CUSTOMER, SHOW_HIDE_MANAGE_CUSTOMER, SELECTED_CUSTOMER } from './../types/actions';
 import { Customer, ManageCustomer } from './../types/customer';
 import { statement } from '@babel/template';
 const customerReducerDefaultState : ManageCustomer = {showHideManageCustomer:false, customers:[]};
@@ -14,6 +14,9 @@ const customerReducer = (state=customerReducerDefaultState, action: CustomerActi
         case  SHOW_HIDE_MANAGE_CUSTOMER:
         return {...state, showHideManageCustomer: action.showOrHide};
  
+               
+        case  SELECTED_CUSTOMER:
+        return {...state, selectedCustomer: action.customer};
         // case SET_CUSTOMERS:
         // return action.customers;
 

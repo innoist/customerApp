@@ -1,24 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Input, Container,Label, Header, Icon, Button, Grid } from 'semantic-ui-react'
 import {DivCustom} from '../styledComponent/div';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../store/configureStore';
 import uuid from "uuid/v4";
-import { Customer } from '../types/customer';
-import { addingCustomer, deletingCustomer, showHideManagecustomer } from '../actions/customers';
+import { Customer, newCustomer } from '../types/customer';
+import { addingCustomer, deletingCustomer, showHideManagecustomer, editCustomer, selectedCustomer, selectingCustomer } from '../actions/customers';
 import AddCustomer from './AddCustomer';
 
 const CustomerList : React.FC = () =>{
     const customers = useSelector((state: AppState) => state.manageCustomerList.customers) || [];
+
+    const customerSelected = useSelector((state: AppState) => state.manageCustomerList.selectedCustomer) || newCustomer;
+
+
+
     const dispatch = useDispatch();
-    const deleteCustomer = (id: string) =>{
+    const onDeleteCustomer = (id: string) =>{
         dispatch(deletingCustomer(id));
       } 
     const addCustomer = () =>{
-       
-       
+        dispatch(selectingCustomer( newCustomer));
         dispatch(showHideManagecustomer(true));
-       
+      }
+      const onEditCustomer = (customer: Customer) =>{
+        dispatch(selectingCustomer(customer));
+        dispatch(showHideManagecustomer(true));
       }
     const customerListHeader =   <Grid>
             <Grid.Row>
@@ -60,14 +67,13 @@ const CustomerList : React.FC = () =>{
         {customer.lastName}
         </Grid.Column>
         <Grid.Column width={4}>
-        {customer.dob.toDateString()}
+        {customer.dob? customer.dob.toDateString() : 'Date of Birth not provided'}
         </Grid.Column>
         <Grid.Column width={1}>
-        <Icon color="grey" name='edit' />
+        <Icon onClick={()=>onEditCustomer(customer)} color="grey" name='edit' />
         </Grid.Column>
         <Grid.Column  width={1}>
-
-        <Icon onClick={()=>deleteCustomer(customer.id)} color="red" name='trash' /> 
+        <Icon onClick={()=>onDeleteCustomer(customer.id)} color="red" name='trash' /> 
         </Grid.Column>
     </Grid.Row>
              
@@ -93,7 +99,7 @@ return (
   {customerListHeader}
   {customerList}
   </DivCustom>
-        <AddCustomer />
+        <AddCustomer selectedCustomer={customerSelected}/>
     </Container>
 )
 

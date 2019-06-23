@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Header, Image, Modal, Divider, Form } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../store/configureStore';
-import { showHideManagecustomer, addingCustomer } from '../actions/customers';
+import { showHideManagecustomer, addingCustomer, selectingCustomer } from '../actions/customers';
 import DatePicker from 'react-datepicker';
 import uuid from 'uuid/v4';
 import { string } from 'prop-types';
-import { Customer } from '../types/customer';
+import { Customer, newCustomer } from '../types/customer';
 
 
 interface IProps{
-    customer?:Customer
+    selectedCustomer:Customer
 }
 interface IState {
 
@@ -19,16 +19,17 @@ interface IState {
      lastName: string;
         dob? : Date   
 }
-const AddCustomer : React.FC<IProps> = (customerProp) =>{
+const AddCustomer : React.FC<IProps> = (Props) =>{
 const showOrHide = useSelector((state: AppState) => state.manageCustomerList.showHideManageCustomer);
+
 const dispatch = useDispatch();
-const custProp = customerProp.customer;
-const [customerState,setCustomerState] = useState <IState> ({
-    id: custProp?custProp.id : uuid(),
-     firstName: custProp ? custProp.firstName : '',
-     lastName: custProp? custProp.lastName  : '',
-    dob: custProp ? custProp.dob : undefined
-});
+const selectedCustomer   = Props.selectedCustomer  ;
+// const [customerState,setCustomerState] = useState <IState> ({
+//     id: selectedCustomer?selectedCustomer.id : uuid(),
+//      firstName: selectedCustomer ? selectedCustomer.firstName : '',
+//      lastName: selectedCustomer? selectedCustomer.lastName  : '',
+//     dob: selectedCustomer ? selectedCustomer.dob : undefined
+// });
 
 
 // const [firstName,setFirstName] = useState(customerProp.customer ? customerProp.customer.firstName : '');
@@ -39,28 +40,33 @@ const [customerState,setCustomerState] = useState <IState> ({
 
 
 const closeAddCustomer = () =>{
+    dispatch(selectingCustomer(newCustomer));
     dispatch(showHideManagecustomer(false));
 }
 const addCustomer = () => {
 
     
-    if(!customerProp.customer){
-        dispatch(addingCustomer(   customerState as Customer));
+    if(selectedCustomer.id == ""){
+        dispatch(addingCustomer({...selectedCustomer,id:uuid()}));
+    }
+    else{
+        dispatch(addingCustomer(selectedCustomer));
     }
     closeAddCustomer();
 }
 
 const selectDOB = (date: Date) =>{
-setCustomerState({...customerState,dob: date});
+dispatch(selectingCustomer({...selectedCustomer, dob: date}));
 }
 const firstNameChange = (e: React.FormEvent<HTMLInputElement>) =>{
 //   setFirstName(e.currentTarget.value);
-setCustomerState({...customerState,firstName: e.currentTarget.value});
+// setCustomerState({...customerState,firstName: e.currentTarget.value});
+dispatch(selectingCustomer({...selectedCustomer, firstName: e.currentTarget.value}));
 }
 const lastNameChange = (e: React.FormEvent<HTMLInputElement>) =>{
-    setCustomerState({...customerState,lastName: e.currentTarget.value});
+    dispatch(selectingCustomer({...selectedCustomer, lastName: e.currentTarget.value}));
 }
-const areStatesValid = customerState.firstName.length >0 && customerState.lastName.length >0 && customerState.dob; 
+const areStatesValid = selectedCustomer.firstName.length >0 && selectedCustomer.lastName.length >0 && selectedCustomer.dob; 
 
 return (
 
@@ -71,16 +77,16 @@ return (
       <Form>
     <Form.Field>
       <label>First Name</label>
-      <input placeholder='First Name' onChange={firstNameChange} value={customerState.firstName}/>
+      <input placeholder='First Name' onChange={firstNameChange} value={selectedCustomer.firstName}/>
     </Form.Field>
     <Form.Field>
       <label>Last Name</label>
-      <input placeholder='Last Name' onChange={lastNameChange} value={customerState.lastName}/>
+      <input placeholder='Last Name' onChange={lastNameChange} value={selectedCustomer.lastName}/>
     </Form.Field>
     <Form.Field>
       <label>Date of Birth</label>
       <span>
-      <DatePicker showMonthDropdown={true} maxDate={new Date()} showYearDropdown={true} selected={customerState.dob} onChange={selectDOB} placeholderText="Click to select a date" />
+      <DatePicker showMonthDropdown={true} maxDate={new Date()} showYearDropdown={true} selected={selectedCustomer.dob} onChange={selectDOB} placeholderText="Click to select a date" />
       </span>
     </Form.Field>
     </Form>
