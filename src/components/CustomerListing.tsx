@@ -13,7 +13,9 @@ const CustomerList : React.FC = () =>{
 
     const customerSelected = useSelector((state: AppState) => state.manageCustomerList.selectedCustomer) || newCustomer;
 
-
+    let [filter,setFilter] = useState<string> ('');
+    console.log('filter', filter);
+    const filteredList: Customer[] = filter == "" ? customers: customers.filter( ({firstName, lastName})=> firstName.toLowerCase().indexOf(filter.toLowerCase()) >= 0 || lastName.toLowerCase().indexOf(filter.toLowerCase()) >= 0 );
 
     const dispatch = useDispatch();
     const onDeleteCustomer = (id: string) =>{
@@ -27,10 +29,13 @@ const CustomerList : React.FC = () =>{
         dispatch(selectingCustomer(customer));
         dispatch(showHideManagecustomer(true));
       }
+      const updatingFilter= (e: React.FormEvent<HTMLInputElement>) =>{
+          setFilter(e.currentTarget.value);
+      };
     const customerListHeader =   <Grid>
             <Grid.Row>
         <Grid.Column width={16}>
-        <Input fluid icon='search' placeholder='Search...' />
+        <Input fluid icon='search' onChange={updatingFilter} value={filter} placeholder='Search...' />
         </Grid.Column>
         </Grid.Row>
     <Grid.Row>
@@ -55,7 +60,7 @@ const CustomerList : React.FC = () =>{
 
     const customerList = 
         <Grid>
-        {customers.map( (customer) => {
+        {filteredList.map( (customer) => {
             return (
 
               
@@ -93,7 +98,7 @@ return (
     <Icon name='add' /> Add New Customer</Button>
     </DivCustom>
     <DivCustom orientation="right">
-        <Label  as='a'  color='grey' tag>Displaying 10/30 customers</Label></DivCustom>
+        <Label  as='a'  color='grey' tag>Displaying {filteredList.length}/{customers.length} customers</Label></DivCustom>
   </DivCustom>
   <DivCustom clear={true}>
   {customerListHeader}
