@@ -6,6 +6,7 @@ import { AppState } from '../store/configureStore';
 import uuid from "uuid/v4";
 import { Customer } from '../types/customer';
 import { addingCustomer, deletingCustomer, showHideManagecustomer } from '../actions/customers';
+import AddCustomer from './AddCustomer';
 
 const CustomerList : React.FC = () =>{
     const customers = useSelector((state: AppState) => state.manageCustomerList.customers) || [];
@@ -98,7 +99,7 @@ return (
   {customerListHeader}
   {customerList}
   </DivCustom>
-        
+        <AddCustomer />
     </Container>
 )
 
