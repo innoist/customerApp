@@ -1,6 +1,6 @@
 import { AppState } from './../store/configureStore';
 import { Customer } from './../types/customer';
-import { AppActions, ADD_CUSTOMER, DELETE_CUSTOMER, EDIT_CUSTOMER, SEARCH_CUSTOMER, SET_CUSTOMERS } from './../types/actions';
+import { AppActions, ADD_CUSTOMER, DELETE_CUSTOMER, EDIT_CUSTOMER, SHOW_HIDE_MANAGE_CUSTOMER, SEARCH_CUSTOMER, SET_CUSTOMERS } from './../types/actions';
 import { Dispatch } from 'redux';
 
 export const addCustomer =(customer: Customer): AppActions => ({
@@ -13,6 +13,11 @@ export const editCustomer =(customer: Customer): AppActions => ({
     type: EDIT_CUSTOMER,
     customer    
     });
+
+export const showHideManagecustomer = (showOrHide: boolean): AppActions => ({
+    type: SHOW_HIDE_MANAGE_CUSTOMER,
+    showOrHide
+});
 
 export const deleteCustomer =(id: string): AppActions => ({
     type: DELETE_CUSTOMER,

@@ -5,7 +5,7 @@ import customersReducer from "../reducers/customers";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 export const rootReducer = combineReducers({
-    customers: customersReducer
+    manageCustomerList: customersReducer
 });
 
  

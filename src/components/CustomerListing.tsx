@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../store/configureStore';
 import uuid from "uuid/v4";
 import { Customer } from '../types/customer';
-import { addingCustomer, deletingCustomer } from '../actions/customers';
+import { addingCustomer, deletingCustomer, showHideManagecustomer } from '../actions/customers';
 
 const CustomerList : React.FC = () =>{
-    const customers = useSelector((state: AppState) => state.customers) || [];
+    const customers = useSelector((state: AppState) => state.manageCustomerList.customers) || [];
     const dispatch = useDispatch();
     const deleteCustomer = (id: string) =>{
         dispatch(deletingCustomer(id));
@@ -21,6 +21,7 @@ const CustomerList : React.FC = () =>{
           lastName: "last",
           dob: new Date()
         }
+        dispatch(showHideManagecustomer(true));
         dispatch(addingCustomer(c));
        
       }

@@ -5,3 +5,11 @@ export interface Customer {
     lastName: string;
     dob: Date;
 }
+
+export interface ManageCustomer {
+
+
+    customers : Customer[],
+    showHideManageCustomer: boolean,
+    customerForm?: Customer
+}

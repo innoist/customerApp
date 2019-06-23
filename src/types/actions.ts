@@ -5,6 +5,8 @@ export const EDIT_CUSTOMER = "EDIT_CUSTOMER";
 export const DELETE_CUSTOMER = "DELETE_CUSTOMER";
 export const SET_CUSTOMERS = "SET_CUSTOMERS";
 export const SEARCH_CUSTOMER = "SEARCH_CUSTOMER";
+export const SHOW_HIDE_MANAGE_CUSTOMER = "SHOW_HIDE_MANAGE_CUSTOMER";
+
 
 export interface SetCustomerAction {
     type: typeof SET_CUSTOMERS;
@@ -32,6 +34,11 @@ export interface SearchCustomerAction {
     search: string;
 }
 
-export type CustomerActionTypes = SetCustomerAction | AddCustomerAction | EditCustomerAction | DeleteCustomerAction | SearchCustomerAction;
+
+export interface ShowHideManageCustomerAction{
+    type: typeof SHOW_HIDE_MANAGE_CUSTOMER,
+    showOrHide: boolean
+}
+export type CustomerActionTypes = SetCustomerAction | AddCustomerAction | EditCustomerAction | DeleteCustomerAction | SearchCustomerAction | ShowHideManageCustomerAction;
 
 export type AppActions = CustomerActionTypes;

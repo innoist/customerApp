@@ -9,7 +9,7 @@ import CustomerList from './components/CustomerListing';
 const App: React.FC = () => {
 
   const [counter, setCounter] = useState(0);
-  const customers = useSelector((state: AppState) => state.customers) || [];
+  const customers = useSelector((state: AppState) => state.manageCustomerList.customers) || [];
   const dispatch = useDispatch()    
   const addCustomer = () =>{
     const c : Customer = {

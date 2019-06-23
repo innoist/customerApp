@@ -41,7 +41,7 @@ it('checking button click', done => {
   let wrapper = mount (<Provider store={store}><App /> </Provider>);
   wrapper.find('button').at(0).simulate('click');
   wrapper.find('button').at(0).simulate('click');
-    let customers = store.getState().customers;
+    let customers = store.getState().manageCustomerList;
   setTimeout(() => {
     wrapper.update();
 
