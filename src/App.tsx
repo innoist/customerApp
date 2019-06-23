@@ -5,7 +5,6 @@ import { useSelector,useDispatch  } from 'react-redux';
 import { AppState } from './store/configureStore';
 import { addingCustomer, deleteCustomer, deletingCustomer } from './actions/customers';
 import { Customer } from './types/customer';
-
 const App: React.FC = () => {
 
   const [counter, setCounter] = useState(0);
@@ -26,7 +25,7 @@ const App: React.FC = () => {
   }
   let customerHTML = customers.map( (customer) => {
     return (
-      <div>
+      <div key={customer.id}>
         <span>{customer.firstName + ' ' + customer.lastName}</span>
         <button onClick={()=>deleteCustomer(customer.id)}>delete button</button>
 
@@ -36,7 +35,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-       <div onClick={ ()=>addCustomer()}>
+      <button onClick={ ()=>addCustomer()}>Add Customer</button>
+       <div  >
+         
          {counter} {customers.length}
        </div>
        <div>
