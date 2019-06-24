@@ -25,8 +25,10 @@ const CustomerList: React.FC = () => {
   );
 
   const customerSelected =
-    useSelector(
-      (state: AppState) => state.manageCustomerList.selectedCustomer
+    useSelector((state: AppState) =>
+      state.manageCustomerList
+        ? state.manageCustomerList.selectedCustomer
+        : newCustomer
     ) || newCustomer;
 
   let [filter, setFilter] = useState<string>("");
@@ -115,7 +117,7 @@ const CustomerList: React.FC = () => {
       <Header as="h1">Welcome to the customer listing page.</Header>
       <DivCustom>
         <DivCustom orientation="left">
-          <Button color="blue" onClick={addCustomer}>
+          <Button name="addCustomer" color="blue" onClick={addCustomer}>
             <Icon name="add" /> Add New Customer
           </Button>
         </DivCustom>

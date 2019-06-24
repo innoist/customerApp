@@ -15,8 +15,10 @@ interface IProps {
   selectedCustomer: Customer;
 }
 const AddCustomer: React.FC<IProps> = Props => {
-  const showOrHide = useSelector(
-    (state: AppState) => state.manageCustomerList.showHideManageCustomer
+  const showOrHide = useSelector((state: AppState) =>
+    state.manageCustomerList
+      ? state.manageCustomerList.showHideManageCustomer
+      : false
   );
   const dispatch = useDispatch();
   const selectedCustomer = Props.selectedCustomer;
