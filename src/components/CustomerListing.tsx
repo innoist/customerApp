@@ -54,7 +54,7 @@ const CustomerList: React.FC = () => {
     dispatch(showHideManagecustomer(true));
   };
   const updatingFilter = (e: React.FormEvent<HTMLInputElement>) => {
-    setFilter(e.currentTarget.value || e.target.value);
+    setFilter(e.currentTarget.value);
   };
   const customerListHeader = (
     <Grid>
