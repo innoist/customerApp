@@ -64,7 +64,7 @@ const CustomerList: React.FC = () => {
     filteredList.length === 0 ? (
       <DivCustom marginTop="2%">
         <Segment secondary>
-          There are no records to display. Please change your searc string or
+          There are no records to display. Please change your search string or
           add New customer
         </Segment>
       </DivCustom>
@@ -88,11 +88,11 @@ const CustomerList: React.FC = () => {
         <Grid.Column className="bold" width={5}>
           <Header as="h4">First Name</Header>
         </Grid.Column>
-        <Grid.Column width={5}>
+        <Grid.Column mobile={4} tablet={5} computer={5}>
           <Header as="h4">Last Name</Header>
         </Grid.Column>
         <Grid.Column width={4}>
-          <Header as="h4">Date of Birth</Header>
+          <Header as="h4">D.O.B</Header>
         </Grid.Column>
         <Grid.Column width={1}></Grid.Column>
         <Grid.Column width={1}></Grid.Column>
@@ -107,7 +107,9 @@ const CustomerList: React.FC = () => {
         return (
           <Grid.Row key={customer.id}>
             <Grid.Column width={5}>{customer.firstName}</Grid.Column>
-            <Grid.Column width={5}>{customer.lastName}</Grid.Column>
+            <Grid.Column mobile={4} tablet={5} computer={5}>
+              {customer.lastName}
+            </Grid.Column>
             <Grid.Column width={4}>
               {customer.dob
                 ? customer.dob.toDateString()
@@ -147,7 +149,7 @@ const CustomerList: React.FC = () => {
       <DivCustom>
         <DivCustom orientation="left">
           <Button name="addCustomer" color="blue" onClick={addCustomer}>
-            <Icon name="add" /> Add New Customer
+            <Icon name="add" /> Add Customer
           </Button>
         </DivCustom>
         <DivCustom orientation="right">
