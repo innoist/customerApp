@@ -8,7 +8,8 @@ import {
   Button,
   Grid,
   Divider,
-  Segment
+  Segment,
+  Message
 } from "semantic-ui-react";
 import { DivCustom } from "../styledComponent/div";
 import { useSelector, useDispatch } from "react-redux";
@@ -173,6 +174,34 @@ const CustomerList: React.FC = () => {
       {/* Same as */}
       <ToastContainer />
       <AddCustomer selectedCustomer={customerSelected} />
+      <DivCustom marginTop="5%">
+        <Message info>
+          <Message.Header>
+            Customer Listing App (feature and tech stack)
+          </Message.Header>
+          <ul>
+            <li>You can add customer using `Add New Customer` buttton</li>
+            <li>
+              Filtered/Total record count is displayed on top right hand side
+            </li>
+            <li>Search is based on first and last name</li>
+          </ul>
+          <div></div>
+          <ul>
+            <li>React using Hooks</li>
+
+            <li>Redux supporting hooks</li>
+            <li>Tests using Jest and enzyme: (using mock and app store)</li>
+            <li>
+              Basic usage of styled component (styled div to left and right
+              component) passing props as well
+            </li>
+            <li>Using React semantic UI controls and React date picker</li>
+            <li>Keeping Responsiveness of UI intact</li>
+            <li>Generating the boiler plate using Create React App</li>
+          </ul>
+        </Message>
+      </DivCustom>
     </Container>
   );
 };
