@@ -83,13 +83,20 @@ const CustomerList: React.FC = () => {
           />
         </Grid.Column>
       </Grid.Row>
-      <Grid.Row>
-        <Grid.Column width={5}>First Name</Grid.Column>
-        <Grid.Column width={5}>Last Name</Grid.Column>
-        <Grid.Column width={4}>Date Of Birth</Grid.Column>
+      <Grid.Row bold>
+        <Grid.Column className="bold" width={5}>
+          <Header as="h4">First Name</Header>
+        </Grid.Column>
+        <Grid.Column width={5}>
+          <Header as="h4">Last Name</Header>
+        </Grid.Column>
+        <Grid.Column width={4}>
+          <Header as="h4">Date of Birth</Header>
+        </Grid.Column>
         <Grid.Column width={1}></Grid.Column>
         <Grid.Column width={1}></Grid.Column>
       </Grid.Row>
+      <Divider />
     </Grid>
   );
 

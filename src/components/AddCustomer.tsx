@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Modal, Divider, Form } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../store/configureStore";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import {
   showHideManagecustomer,
   addingCustomer,
