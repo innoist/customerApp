@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/customerApp/static/css/main.31ffd34e.chunk.css",
+    "main.js": "/customerApp/static/js/main.c46c0eab.chunk.js",
+    "main.js.map": "/customerApp/static/js/main.c46c0eab.chunk.js.map",
+    "runtime~main.js": "/customerApp/static/js/runtime~main.54ad3f6c.js",
+    "runtime~main.js.map": "/customerApp/static/js/runtime~main.54ad3f6c.js.map",
+    "static/css/2.09924519.chunk.css": "/customerApp/static/css/2.09924519.chunk.css",
+    "static/js/2.ab00b6e2.chunk.js": "/customerApp/static/js/2.ab00b6e2.chunk.js",
+    "static/js/2.ab00b6e2.chunk.js.map": "/customerApp/static/js/2.ab00b6e2.chunk.js.map",
+    "index.html": "/customerApp/index.html",
+    "precache-manifest.9855bb6be66c1185dabd7102fc8c2edd.js": "/customerApp/precache-manifest.9855bb6be66c1185dabd7102fc8c2edd.js",
+    "service-worker.js": "/customerApp/service-worker.js",
+    "static/css/2.09924519.chunk.css.map": "/customerApp/static/css/2.09924519.chunk.css.map",
+    "static/css/main.31ffd34e.chunk.css.map": "/customerApp/static/css/main.31ffd34e.chunk.css.map",
+    "static/media/semantic.min.css": "/customerApp/static/media/outline-icons.ef60a4f6.woff"
+  }
+}
