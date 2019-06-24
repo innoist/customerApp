@@ -6,7 +6,9 @@ import {
   Header,
   Icon,
   Button,
-  Grid
+  Grid,
+  Divider,
+  Segment
 } from "semantic-ui-react";
 import { DivCustom } from "../styledComponent/div";
 import { useSelector, useDispatch } from "react-redux";
@@ -56,6 +58,17 @@ const CustomerList: React.FC = () => {
   const updatingFilter = (e: React.FormEvent<HTMLInputElement>) => {
     setFilter(e.currentTarget.value);
   };
+  const noUser =
+    filteredList.length === 0 ? (
+      <DivCustom marginTop="2%">
+        <Segment secondary>
+          There are no records to display. Please change your searc string or
+          add New customer
+        </Segment>
+      </DivCustom>
+    ) : (
+      ""
+    );
   const customerListHeader = (
     <Grid>
       <Grid.Row>
@@ -113,7 +126,15 @@ const CustomerList: React.FC = () => {
 
   return (
     <Container>
-      <Header as="h1">Welcome to the customer listing page.</Header>
+      <DivCustom marginTop="5%" marginBottom="5%">
+        <Divider horizontal>
+          <Header as="h3">
+            <Icon name="user" />
+            Welcome to the customer listing page.
+          </Header>
+        </Divider>
+      </DivCustom>
+
       <DivCustom>
         <DivCustom orientation="left">
           <Button name="addCustomer" color="blue" onClick={addCustomer}>
@@ -129,7 +150,9 @@ const CustomerList: React.FC = () => {
       <DivCustom clear={true}>
         {customerListHeader}
         {customerList}
+        {noUser}
       </DivCustom>
+
       <AddCustomer selectedCustomer={customerSelected} />
     </Container>
   );
