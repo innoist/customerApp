@@ -20,8 +20,9 @@ import {
 import AddCustomer from "./AddCustomer";
 
 const CustomerList: React.FC = () => {
-  const customers =
-    useSelector((state: AppState) => state.manageCustomerList.customers) || [];
+  const customers = useSelector((state: AppState) =>
+    state.manageCustomerList ? state.manageCustomerList.customers : []
+  );
 
   const customerSelected =
     useSelector(
