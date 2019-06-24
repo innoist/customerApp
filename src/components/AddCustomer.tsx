@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Modal, Divider, Form } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../store/configureStore";
+import { toast, ToastContainer } from "react-toastify";
 import {
   showHideManagecustomer,
   addingCustomer,
@@ -29,9 +30,28 @@ const AddCustomer: React.FC<IProps> = Props => {
   const addCustomer = () => {
     if (selectedCustomer.id === "") {
       dispatch(addingCustomer({ ...selectedCustomer, id: uuid() }));
+      toast.success(
+        `${selectedCustomer.firstName +
+          " " +
+          selectedCustomer.lastName} is added successfully!`,
+        {
+          position: "top-right",
+          autoClose: 3000
+        }
+      );
     } else {
       dispatch(editingCustomer(selectedCustomer));
+      toast.success(
+        `${selectedCustomer.firstName +
+          " " +
+          selectedCustomer.lastName} is updated successfully!`,
+        {
+          position: "top-right",
+          autoClose: 3000
+        }
+      );
     }
+
     closeAddCustomer();
   };
 

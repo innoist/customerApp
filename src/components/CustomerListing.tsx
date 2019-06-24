@@ -20,6 +20,7 @@ import {
   selectingCustomer
 } from "../actions/customers";
 import AddCustomer from "./AddCustomer";
+import { ToastContainer } from "react-toastify";
 
 const CustomerList: React.FC = () => {
   const customers = useSelector((state: AppState) =>
@@ -152,7 +153,18 @@ const CustomerList: React.FC = () => {
         {customerList}
         {noUser}
       </DivCustom>
-
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+        pauseOnHover
+      />
+      {/* Same as */}
+      <ToastContainer />
       <AddCustomer selectedCustomer={customerSelected} />
     </Container>
   );
