@@ -188,6 +188,10 @@ const CustomerList: React.FC = () => {
           </ul>
           <div></div>
           <ul>
+            <li> npm run start : to start the app in dev mode</li>
+            <li>npm run test-coverage: to run the test and coverage report </li>
+          </ul>
+          <ul>
             <li>React using Hooks</li>
 
             <li>Redux supporting hooks</li>

@@ -30,7 +30,7 @@
     "typescript": "3.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm install && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --a",
     "eject": "react-scripts eject",
