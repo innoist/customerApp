@@ -2,6 +2,7 @@
   "name": "my-type",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://innoist.github.io/customerApp",
   "dependencies": {
     "@types/enzyme": "^3.9.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
@@ -35,6 +36,7 @@
     "test": "react-scripts test --a",
     "eject": "react-scripts eject",
     "test-coverage": "npm test -- --coverage",
+    "deploy": "gh-pages -d build",
     "lint:fix": "eslint './src/**/*.{ts,tsx}'"
   },
   "eslintConfig": {
@@ -59,6 +61,7 @@
     "eslint-config-prettier": "^5.0.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-prettier": "^3.1.0",
+    "gh-pages": "^2.0.1",
     "prettier": "^1.18.2"
   }
 }
