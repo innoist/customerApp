@@ -2,14 +2,14 @@ import { Customer, ManageCustomer } from "./../types/customer";
 export const getInitialData = (): ManageCustomer => {
   const c1: Customer = {
     id: "1",
-    firstName: "first",
-    lastName: "last",
+    firstName: "Syed",
+    lastName: "Usman",
     dob: new Date()
   };
   const c2: Customer = {
     id: "3",
-    firstName: "first",
-    lastName: "last",
+    firstName: "Jame",
+    lastName: "Drive",
     dob: new Date()
   };
   const defaultData: ManageCustomer = {

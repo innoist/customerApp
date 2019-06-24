@@ -16,4 +16,3 @@ export const store = createStore(
     applyMiddleware(thunk as ThunkMiddleware<AppState, AppActions>)
   )
 );
-// export const store = createStore(rootReducer, composeWithDevTools( applyMiddleware(thunk as ThunkMiddleware<AppState, AppActions>)));

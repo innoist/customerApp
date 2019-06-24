@@ -32,7 +32,6 @@ const CustomerList: React.FC = () => {
     ) || newCustomer;
 
   let [filter, setFilter] = useState<string>("");
-  console.log("filter", filter);
   const filteredList: Customer[] =
     filter === ""
       ? customers
@@ -55,7 +54,7 @@ const CustomerList: React.FC = () => {
     dispatch(showHideManagecustomer(true));
   };
   const updatingFilter = (e: React.FormEvent<HTMLInputElement>) => {
-    setFilter(e.currentTarget.value);
+    setFilter(e.currentTarget.value || e.target.value);
   };
   const customerListHeader = (
     <Grid>
