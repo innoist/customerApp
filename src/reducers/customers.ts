@@ -23,17 +23,17 @@ const customerReducer = (state=customerReducerDefaultState, action: CustomerActi
         case DELETE_CUSTOMER:
         return  Object.assign({},{...state},{customers:state.customers.filter( ({id})=> id !==action.id)});
 
-        // case EDIT_CUSTOMER:
-        // return state.map(customer=> {
-        //     if(customer.id == action.customer.id){
-        //         return{
-        //             ...customer, ...action.customer
-        //         };
-        //     }
-        //     else{
-        //         return customer;
-        //     }
-        // })
+        case EDIT_CUSTOMER:
+        return Object.assign ( {}, {...state}, {customers: state.customers.map(customer=> {
+            if(customer.id == action.customer.id){
+                return{
+                    ...customer, ...action.customer
+                };
+            }
+            else{
+                return customer;
+            }
+        })});
         default:
         return state;
     }

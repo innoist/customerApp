@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Header, Image, Modal, Divider, Form } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../store/configureStore';
-import { showHideManagecustomer, addingCustomer, selectingCustomer } from '../actions/customers';
+import { showHideManagecustomer, addingCustomer, selectingCustomer, editingCustomer } from '../actions/customers';
 import DatePicker from 'react-datepicker';
 import uuid from 'uuid/v4';
 import { string } from 'prop-types';
@@ -50,7 +50,7 @@ const addCustomer = () => {
         dispatch(addingCustomer({...selectedCustomer,id:uuid()}));
     }
     else{
-        dispatch(addingCustomer(selectedCustomer));
+        dispatch(editingCustomer(selectedCustomer));
     }
     closeAddCustomer();
 }
